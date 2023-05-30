@@ -1,0 +1,32 @@
+# Всі відгуки від одної людини за певний період з 22 квітня по 25 квітня 2023 року
+SELECT * FROM feedback where name = "Іван Іванов" and date between "2012-04-22" and "2020-04-25";
+
+# Всі відгуки за 2022 рік
+SELECT * FROM feedback WHERE date REGEXP '2022';
+
+# Всі відгуки клієнта з іменем Іван Іванов
+SELECT * FROM feedback where name = "Іван Іванов";
+
+# Список тарифів з ціною меншою за 20
+SELECT * FROM tariff where price < 20;
+
+# Кількість всіх відгуків про компанію 
+SELECT COUNT(*) AS 'number of feedbacks' FROM feedback;
+
+# Пошук послуг за ключовим словом консультації
+SELECT * FROM service WHERE name REGEXP 'консультації';
+
+# Список всіх відгуків про компанію
+SELECT * FROM feedback;
+
+#  Перегляд відгуку з наступними даними: Ім'я та прізвище клієнта, дата відгуку та безпосередньо сам відгук
+SELECT text, img_link FROM post;
+
+# Перегляд інформаційних публікацій з фотографіями
+SELECT name, date, content FROM feedback;
+
+# Перегляд цін на всі послуги
+SELECT name, price from tariff;
+
+# Перегляд послуг з ціною 1000
+SELECT name, price from tariff where price=1000;
