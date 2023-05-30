@@ -1,14 +1,35 @@
-# Всі відгуки від одної людини за певний період з 22 квітня по 25 квітня 2023 року
-SELECT * FROM feedback where name = "Іван Іванов" and date between "2012-04-22" and "2020-04-25";
-
+#  Всі відгуки від одної людини за певний період з 22 квітня по 25 квітня 2023 року
+ SELECT  feedback.name, feedback.content, feedback.date, user.first_name, user.last_name, tariff.name
+   FROM feedback
+     JOIN user
+     ON user.id = feedback.user_id
+   JOIN tariff
+     ON tariff.id = feedback.tariff_id
+   WHERE user.first_name = "Настя"
+     AND user.last_name = "Крук"
+     AND feedback.date BETWEEN "2012-04-22" AND "2022-04-25";
+    
 # Всі відгуки за 2022 рік
-SELECT * FROM feedback WHERE date REGEXP '2022';
+ SELECT  feedback.name, feedback.content, feedback.date, user.id, user.first_name, user.last_name, tariff.name
+   FROM feedback
+     JOIN user
+     ON user.id = feedback.user_id
+   JOIN tariff
+     ON tariff.id = feedback.tariff_id
+   WHERE feedback.date REGEXP '2022';
 
-# Всі відгуки клієнта з іменем Іван Іванов
-SELECT * FROM feedback where name = "Іван Іванов";
+# Всі відгуки клієнта з іменем Олександр Пристай
+ SELECT  feedback.name, feedback.content, feedback.date, user.id, user.first_name, user.last_name, tariff.name
+    FROM feedback
+      JOIN user
+      ON user.id = feedback.user_id
+    JOIN tariff
+      ON tariff.id = feedback.tariff_id
+    WHERE user.first_name = "Олександр"
+      AND user.last_name = "Пристай";
 
-# Список тарифів з ціною меншою за 20
-SELECT * FROM tariff where price < 20;
+# Список тарифів з ціною меншою за 2000
+SELECT * FROM tariff where price < 2000; 
 
 # Кількість всіх відгуків про компанію 
 SELECT COUNT(*) AS 'number of feedbacks' FROM feedback;
@@ -17,16 +38,29 @@ SELECT COUNT(*) AS 'number of feedbacks' FROM feedback;
 SELECT * FROM service WHERE name REGEXP 'консультації';
 
 # Список всіх відгуків про компанію
-SELECT * FROM feedback;
+SELECT  feedback.name, feedback.content, feedback.date, user.id, user.first_name, user.last_name, tariff.name
+    FROM feedback
+   JOIN user
+      ON user.id = feedback.user_id
+    JOIN tariff
+      ON tariff.id = feedback.tariff_id;
 
-#  Перегляд відгуку з наступними даними: Ім'я та прізвище клієнта, дата відгуку та безпосередньо сам відгук
-SELECT text, img_link FROM post;
+#  Перегляд відгуку з наступними даними: Ім'я та прізвище клієнта, дата відгуку, тариф клаєнта та безпосередньо сам відгук
+ SELECT  user.first_name, user.last_name, feedback.date, tariff.name, feedback.content 
+     FROM feedback
+       JOIN user
+       ON user.id = feedback.user_id
+     JOIN tariff
+       ON tariff.id = feedback.tariff_id;
 
-# Перегляд інформаційних публікацій з фотографіями
-SELECT name, date, content FROM feedback;
+# Перегляд інформаційних публікацій з фотографіями та типами публікацій
+ SELECT post.text, post.img_link, post_type.name AS "Post type"
+   FROM post
+     JOIN post_type
+     ON post_type.id = post.type_id;
 
 # Перегляд цін на всі послуги
-SELECT name, price from tariff;
+ SELECT name, price from tariff;
 
 # Перегляд послуг з ціною 1000
-SELECT name, price from tariff where price=1000;
+ SELECT name, price from tariff where price=1000;
