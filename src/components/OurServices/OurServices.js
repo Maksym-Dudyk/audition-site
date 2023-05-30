@@ -106,7 +106,7 @@ const OurServices = () => {
             <p>{tariff.description}</p>
             <p>{tariff.price} грн/міс</p>
           </div>
-        ))}
+        ))}+
       </div>
       <h2>Відгуки</h2>
       <ul>
