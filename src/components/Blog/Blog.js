@@ -18,9 +18,10 @@ const Blog = () => {
       <h1>Блог</h1>
 
       <section className="articles">
-        {articles.map(({ text, img_link }, index) => (
+        {articles.map(({ text, img_link, type: {name} }, index) => (
           <a href="/" key={index}>
             <img src={img_link} alt={text} />
+            <div>{name}</div>
             <h2>{text}</h2>
           </a>
         ))}

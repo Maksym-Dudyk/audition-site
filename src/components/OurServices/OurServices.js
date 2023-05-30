@@ -93,7 +93,7 @@ const OurServices = () => {
       <ul>
         {services.map((service) => (
           <li key={service.id}>
-            <h3>{service.title}</h3>
+            <h3>{service.name}</h3>
             <p>{service.description}</p>
           </li>
         ))}
@@ -113,6 +113,8 @@ const OurServices = () => {
         {reviews.map((review) => (
           <li key={review.id}>
             <h3>{review.name}</h3>
+            <h5>{review.user.first_name} {review.user.last_name}</h5>
+            <h5>Тариф: {review.tariff.name}</h5>
             <p>{review.content}</p>
           </li>
         ))}

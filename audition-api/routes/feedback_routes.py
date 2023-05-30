@@ -19,7 +19,9 @@ def create_feedback():
 @feedback_bp.route('/', methods=['GET'])
 def get_all_feedbacks():
     all_feedbacks = Feedback.query.all()
+    print(all_feedbacks[0].user.first_name)
     result = feedbacks_schema.dump(all_feedbacks)
+    print(result)
     return jsonify(result)
 
 # Get a single feedback

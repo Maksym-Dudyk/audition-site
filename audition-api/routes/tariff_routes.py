@@ -21,7 +21,6 @@ def create_tariff():
 # Retrieve all tariff
 @tariff_bp.route('/', methods=['GET'])
 def get_tariffs():
-    print("lol")
     all_tariffs = Tariff.query.all()
     result = tariffs_schema.dump(all_tariffs)
     return jsonify(result)

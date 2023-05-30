@@ -23,6 +23,7 @@ def add_post():
 @posts_bp.route('/', methods=['GET'])
 def get_posts():
     posts = Post.query.all()
+    print(posts[0].type.name)
     result = posts_schema.dump(posts)
 
     return jsonify(result)
